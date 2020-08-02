@@ -1,0 +1,132 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#ac">Add Category |</a></li>
+    <li><a data-toggle="tab" href="#ap">| Add Product |</a></li>
+    <li><a data-toggle="tab" href="#dc">| Delete Category |</a></li>
+    <li><a data-toggle="tab" href="#dp">| Delete Product |</a></li>
+    <li><a data-toggle="tab" href="#uc">| Update Category |</a></li>
+    <li><a data-toggle="tab" href="#up">| Update Product |</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="ac" class="tab-pane fade in active">
+      <h3>Add Category</h3>
+      <form #ac ="ngForm" (ngSubmit)="onACSubmit(ac.value)" >
+        <div class="form-group row">
+          <div class="col-4">
+          <label for="exampleInputEmail1">Category Name</label>
+          </div>
+          <div class="col-8">
+          <input ngModel type="text" class="form-control" name="cname" id="cname" aria-describedby="category" placeholder="Enter Category Name">
+        </div>  
+        </div>
+        <div class="row"  *ngIf="showMsgAC">
+          <div class="col-xs-12">
+            <p class="alert alert-success">
+                <strong>Added details successfully</strong>
+              </p>
+          </div>
+        </div>
+        <div class="row"  *ngIf="showFailMsgAC">
+          <div class="col-xs-12">
+            <p class="alert alert-danger">
+                <strong>Failed to add details</strong>
+              </p>
+          </div>
+        </div>
+        <button  type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+    <div id="ap" class="tab-pane fade">
+      <h3>Add Product</h3>
+      <form #ap ="ngForm" (ngSubmit)="onAPSubmit(ap.value)" >
+        <div class="form-group row">
+          <div class="col-4">
+          <label for="exampleInputEmail1">Product Name</label>
+          </div>
+          <div class="col-8">
+          <input ngModel type="text" class="form-control" name="pname" id="pname" aria-describedby="category" placeholder="Enter Product Name">
+        </div>  
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+          <label for="exampleInputEmail1">Product Category</label>
+          </div>
+          <div class="col-8">
+            <select [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedCid" id="pcategory">
+              <option value="" disabled selected>select an option</option>
+              <option *ngFor="let category of categories" [value]="category.cid">{{category.cname}}</option>
+            </select>
+          </div>  
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+          <label for="exampleInputEmail1">Product Description</label>
+          </div>
+          <div class="col-8">
+          <textarea ngModel name="pdescription" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>  
+        </div>
+        <div class="form-group row">
+          <div class="col-4">
+          <label for="exampleInputEmail1">Product image</label>
+          </div>
+          <div class="col-8">
+          <input ngModel type="file" (change)="fileProgress($event)" name="photo" id="photo">
+        </div>  
+        </div>
+
+        <div class="row"  *ngIf="showMsgAP">
+          <div class="col-xs-12">
+            <p class="alert alert-success">
+                <strong>Added details successfully</strong>
+  
+            </p>
+          </div>
+        </div>
+        <div class="row"  *ngIf="showFailMsgAP">
+          <div class="col-xs-12">
+            <p class="alert alert-danger">
+                <strong>Failed to add details</strong>
+              </p>
+          </div>
+        </div>
+
+        <button  type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+    <div id="dc" class="tab-pane fade">
+      <h3>Delete Category</h3>
+      <table>
+      <div *ngFor="let category of categories;let i=index">
+        
+          <tr>
+            <td>
+              {{category.cid}} -- {{category.cname}}
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deleteCategory(category.cid)">Delete</button>
+            </td>
+          </tr>         
+   
+      </div>
+    </table>
+    </div>
+    <div id="dp" class="tab-pane fade">
+      <h3>Delete Product</h3>
+      <p>
+        SQL is just a query language, it is not a database. To perform SQL queries,
+        you need to install any database for example Oracle, MySQL, MongoDB, PostGre SQL, SQL Server, DB2 etc.
+      </p>
+    </div>
+    <div id="uc" class="tab-pane fade">
+      <h3>Update Category</h3>
+      <p>The C Language is developed for creating system applications that direct
+        interacts to the hardware devices such as drivers, kernals etc.</p>
+    </div>
+    <div id="up" class="tab-pane fade">
+      <h3>Update Product</h3>
+      <p>The C Language is developed for creating system applications that direct
+        interacts to the hardware devices such as drivers, kernals etc.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ca3a3a;">
+  <h2><a routerLink="/" class="navbar-brand" href="#">
+    <img src="../../assets/logo.png" height="55px" width="70px"> GoaEasy Engg Solution</a></h2>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li  style="background-color: #ca3a3a;" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Products
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div *ngFor="let category of categories">
+            <a class="dropdown-item" [routerLink]="['/products',category.cid]" href="#">{{category.cname}}</a>
+         </div>
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a routerLink="/about" class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact" class="nav-link" href="#">Contact Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="/admin" class="nav-link" href="#">.</a>
+      </li>
+    </ul>
+  </div>
+</nav>

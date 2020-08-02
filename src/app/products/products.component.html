@@ -1,0 +1,36 @@
+<div class="content">
+
+  <div class="row justify-content-md-center mx-auto text-center" *ngFor="let productsRow of productsRows;let i=index">
+
+    <div class="col-12 col-sm-6 col-md-3 col-lg-3 align-self-center" *ngFor="let product of productsRow">
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 align-self-center">
+        <div class="card span4" style="width: 18rem;">
+          <img class="card-img-top mx-auto d-block" src="../../assets/products/{{product.pphoto}}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{product.pname}}</h5>
+            <a class="btn btn-danger" data-toggle="modal" (click)="openModal(product.pdescription)" data-target="#exampleModalCenter">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+     <br/><br/><br/>
+  </div> 
+ 
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        {{pdescription}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-danger">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br /><br />
+<div id="copyright">
+  copyright ©2020 goaeasyengg.com
+</div>
